@@ -1,9 +1,7 @@
 <template>
   <div :style="{height:'100vh'}">
     <the-navigation></the-navigation>
-    <main>
-      <router-view></router-view>
-    </main>
+    <router-view></router-view>
   </div>
 </template>
 

@@ -3,7 +3,7 @@
     <div class="left-side">
         <h2>Chuck Norris</h2>
         <h4>In this website you can have fun reading Chuck Norris jokes.
-          You can read funny jokes or choosen by category. If some jokes impress you, you can add them to favourites. </h4>
+          You can read funny jokes or chosen by category. If some jokes impress you, you can add them to favourites. </h4>
         <router-link to="/jokes">
           <button-component :button-text="buttonText" ></button-component>
         </router-link>
@@ -27,7 +27,7 @@
 
 <style>
 *{
-  font-family: "Berlin Sans FB";
+  font-family: "Berlin Sans FB", Arial, sans-serif;;
   letter-spacing: 1px;
 }
 .home-container{
