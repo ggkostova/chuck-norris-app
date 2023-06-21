@@ -3,7 +3,7 @@
     <div class="left-side">
         <h2>Chuck Norris</h2>
         <h4>This website is created with comic purpose. Here you can have fun reading Chuck Norris jokes and choose them by category.
-          If some jokes impress you, you can add them to favourites and show it to your friends. </h4>
+          If some jokes impress you, you can add them to favourites and show them to your friends. </h4>
         <router-link to="/jokes">
           <button-component class="home-btn" :button-text="buttonText" ></button-component>
         </router-link>
@@ -31,8 +31,8 @@
   letter-spacing: 1px;
 }
 .home-container{
-  min-height: 100%;
-  background-color: #562f2f;
+  min-height: 89.7%;
+  background-color: #723b3b;
 }
 .left-side {
   width: 30%;
@@ -63,7 +63,7 @@
   top: 17%;
   width: 37%;
   height: 78%;
-  box-shadow: 5px 5px 5px #afafaf;
+  box-shadow: 5px 5px 5px #573131;
   border-radius: 10%;
   background-color: rgba(81, 81, 161, 0.99);
 }

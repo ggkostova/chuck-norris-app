@@ -94,8 +94,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #502e2e;
-  min-height: 100%;
+  background-color: #723b3b;
+  min-height: 89.7%;
   position: relative;
 }
 .jokes-page-buttons {
@@ -126,7 +126,7 @@ export default {
 .joke-container {
   width: 80%;
   height: 15rem;
-  box-shadow: 5px 5px 5px #afafaf;
+  box-shadow: 5px 5px 5px #573131;
   border-radius: 20px;
   display: flex;
   align-items: center;

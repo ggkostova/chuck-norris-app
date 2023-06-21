@@ -43,7 +43,9 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #562f2f;
+  background-color: #723b3b;
+  max-height: 70vh;
+  overflow-y: auto;
   min-height: 100%;
 }
 .fav-jokes-container h2{
@@ -63,6 +65,7 @@ export default {
   margin: 1rem;
   display: flex;
   flex-direction: column;
+  box-shadow: 5px 5px 5px #573131;
 }
 .heart{
   display: flex;
