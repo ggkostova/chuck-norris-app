@@ -27,8 +27,7 @@ export default {
   },
   methods: {
     getDataFromLocalStorage() {
-      const temp = JSON.parse(localStorage.getItem('Favourites')) || [];
-      this.favouriteJokes = temp;
+      this.favouriteJokes = JSON.parse(localStorage.getItem('Favourites')) || [];
     },
     removeJokeFromFavourites(jokeId){
       this.favouriteJokes = this.favouriteJokes.filter(joke => joke.id !== jokeId);

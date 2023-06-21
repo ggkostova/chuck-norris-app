@@ -74,8 +74,7 @@ export default {
       this.joke.jokeText = tempJoke.value;
     },
     async fetchAllCategories() {
-      const listedCategories = await fetchFunction(`${CHUCK_API_URL}/categories`);
-      this.categories = listedCategories;
+      this.categories = await fetchFunction(`${CHUCK_API_URL}/categories`);
     },
     async fetchSelectedCategoryJoke() {
       if(this.selectedCategory){
