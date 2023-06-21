@@ -2,10 +2,10 @@
   <div class="home-container">
     <div class="left-side">
         <h2>Chuck Norris</h2>
-        <h4>In this website you can have fun reading Chuck Norris jokes.
-          You can read funny jokes or chosen by category. If some jokes impress you, you can add them to favourites. </h4>
+        <h4>This website is created with comic purpose. Here you can have fun reading Chuck Norris jokes and choose them by category.
+          If some jokes impress you, you can add them to favourites and show it to your friends. </h4>
         <router-link to="/jokes">
-          <button-component :button-text="buttonText" ></button-component>
+          <button-component class="home-btn" :button-text="buttonText" ></button-component>
         </router-link>
     </div>
     <img class="chuck-norris-image" src="../../assets/images/chuck-norris.jpg" alt="Chuck Norris image">
@@ -31,18 +31,17 @@
   letter-spacing: 1px;
 }
 .home-container{
-  height: 90vh;
+  min-height: 100%;
+  background-color: #562f2f;
 }
 .left-side {
-  width: 20%;
-  height: 100%;
+  width: 30%;
   position: relative;
-  top: 130px;
-  left: 20%;
-  color: #000000;
+  top: 8rem;
+  left: 12%;
   border-radius: 10px;
   text-align: center;
-  padding: 50px;
+  color: #efefef;
 }
 .left-side h2, .left-side h4{
   margin-bottom: 30px;
@@ -54,13 +53,16 @@
 .left-side h4 {
   font-size: 30px;
 }
-
+.home-btn{
+  position: relative;
+  right: 15px;
+}
 .chuck-norris-image{
   position: absolute;
-  right: 18%;
-  top: 16%;
+  right: 12%;
+  top: 17%;
   width: 37%;
-  height: 77%;
+  height: 78%;
   box-shadow: 5px 5px 5px #afafaf;
   border-radius: 10%;
   background-color: rgba(81, 81, 161, 0.99);

@@ -40,7 +40,7 @@ import ButtonComponent from "@/components/ButtonComponent.vue";
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background-color: #794646;
+  background-color: #411b1b;
   height: 100px;
 }
 

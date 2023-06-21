@@ -18,7 +18,7 @@ export default {
 .button{
   margin-left: 30px;
   padding: 10px 22px;
-  background-color: #d29999;
+  background-color: #efd6d6;
   border: none;
   border-radius: 10px;
   text-decoration: none;

@@ -1,16 +1,18 @@
 <template>
   <div class="jokes-page">
-    <div class="jokes-page-btns">
-      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" v-model="selectedCategory" @change="fetchSelectedCategoryJoke">
-        <option value="" selected>Choose category</option>
-        <option v-for="category in categories" :value="category" :key="category">{{ category }}</option>
-      </select>
+    <div class="jokes-page-buttons">
+      <keep-alive>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" v-model="selectedCategory" @change="fetchSelectedCategoryJoke">
+          <option value="" selected>Choose category</option>
+          <option v-for="category in categories" :value="category" :key="category">{{ category }}</option>
+        </select>
+      </keep-alive>
       <button-component class="another-joke-btn" :button-text="anotherJokeBtn" @click="getAnotherJoke"></button-component>
     </div>
 
     <div class="joke-container">
-      <div v-if="randomJoke.jokeText && !selectedCategory">
-        <p>{{ randomJoke.jokeText }}</p>
+      <div v-if="joke.jokeText && !selectedCategory">
+        <p>{{ joke.jokeText }}</p>
       </div>
       <div v-else-if="selectedCategory && selectedCategoryJoke">
         <p>{{ selectedCategoryJoke }}</p>
@@ -18,8 +20,13 @@
       <div v-else>
         <p>Loading joke...</p>
       </div>
-<!--      <i :class="['fas', 'fa-star', 'star-icon']"></i>-->
+      <router-link to="/favourites">
+        <div class="fav-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" @click="addToFavourites()" height="2em" viewBox="0 0 512 512"><path d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z"/></svg>
+        </div>
+      </router-link>
     </div>
+
   </div>
 </template>
 
@@ -36,7 +43,8 @@ export default {
     return {
       categoriesBtn: 'Choose category',
       anotherJokeBtn: 'Get another one',
-      randomJoke: {
+      favouritesBtn: 'Add to favourites',
+      joke: {
         id: '',
         jokeText: ''
       },
@@ -50,6 +58,9 @@ export default {
     this.fetchAllCategories();
   },
   methods: {
+    addToFavourites(){
+      this.$store.commit('addToFavourites', this.joke);
+    },
     getAnotherJoke(){
       if(this.selectedCategory){
         this.fetchSelectedCategoryJoke();
@@ -58,9 +69,9 @@ export default {
       }
     },
     async fetchRandomJoke() {
-      const tempRandomJoke = await fetchFunction(`${CHUCK_API_URL}/random`);
-      this.randomJoke.id = tempRandomJoke.id;
-      this.randomJoke.jokeText = tempRandomJoke.value;
+      const tempJoke = await fetchFunction(`${CHUCK_API_URL}/random`);
+      this.joke.id = tempJoke.id;
+      this.joke.jokeText = tempJoke.value;
     },
     async fetchAllCategories() {
       const listedCategories = await fetchFunction(`${CHUCK_API_URL}/categories`);
@@ -71,44 +82,50 @@ export default {
         const categorizedJoke = await fetchFunction(`${CHUCK_API_URL}/random?category=${this.selectedCategory}`);
         this.selectedCategoryJoke = categorizedJoke.value;
       }else{
-        this.selectedCategoryJoke = this.randomJoke.jokeText;
+        this.selectedCategoryJoke = this.joke.jokeText;
       }
-
     }
   }
 };
 </script>
 
 <style>
-.fas{
-  height: 10px;
-}
 .jokes-page {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #502e2e;
+  min-height: 100%;
   position: relative;
-  top: 250px;
 }
-.jokes-page-btns {
+.jokes-page-buttons {
   display: flex;
   width: 70%;
   justify-content: center;
+  position: absolute;
+  top: 20%;
 }
 .form-select {
   padding: 0 0 0 1rem !important;
-  --bs-body-bg: #d29999 !important;
+  --bs-body-bg: #efd6d6 !important;
   height: 60px;
   width: 20% !important;
   font-size: 20px !important;
+  border: none !important;
 }
 .another-joke-btn{
   margin-bottom: 1rem;
   width: 20%;
 }
+.fav-btn{
+  color: #efefef;
+  position: absolute;
+  right: 80px;
+  bottom: 30px;
+}
 .joke-container {
   width: 80%;
-  height: 10rem;
+  height: 15rem;
   box-shadow: 5px 5px 5px #afafaf;
   border-radius: 20px;
   display: flex;
@@ -116,8 +133,11 @@ export default {
   justify-content: center;
   background-color: #e3d1d1;
   margin-top: 40px;
+  position: absolute;
+  top: 25%;
+  font-size: 20px;
 }
 .joke-container>div {
-  padding: 0px 10px;
+  padding: 0 10px;
 }
 </style>
