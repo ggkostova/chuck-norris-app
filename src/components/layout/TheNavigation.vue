@@ -55,16 +55,6 @@ import ButtonComponent from "@/components/ButtonComponent.vue";
   right: 5%;
 }
 
-/*.buttons-side button {*/
-/*  margin-left: 30px;*/
-/*  padding: 5px 20px 5px 20px;*/
-/*  background-color: #e3d1d1;*/
-/*  border: none;*/
-/*  border-radius: 10px;*/
-/*  &:hover{*/
-/*    transform: scale(1.1);*/
-/*  }*/
-/*}*/
 a{
   text-decoration: none;
   color:black;
