@@ -29,6 +29,13 @@ const store = createStore({
             state.favourites.push(joke);
             localStorage.setItem("Favourites", JSON.stringify(state.favourites));
         },
+        removeJokeFromFavourites(state, jokeId){
+            if(!this.favouriteJokes){
+                this.favouriteJokes = [];
+            }
+            this.favouriteJokes = this.favouriteJokes.filter(joke => joke.id !== jokeId);
+            localStorage.setItem('Favourites', JSON.stringify(this.favouriteJokes));
+        }
     },
 })
 
