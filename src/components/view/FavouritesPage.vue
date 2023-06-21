@@ -1,6 +1,6 @@
 <template>
   <div class="fav-jokes-container">
-    <h2> {{favouriteJokes === [] ? 'Favourite Jokes:' : 'Favourite Jokes list is empty.'}}</h2>
+    <h2> {{ headerText() }}</h2>
     <div class="cards-container">
       <div v-for="joke in favouriteJokes" :key="joke.id" class="card" style="width: 18rem;">
         <div class="card-body">
@@ -26,6 +26,13 @@ export default {
     this.getDataFromLocalStorage();
   },
   methods: {
+    headerText() {
+      if (this.favouriteJokes.length === 0) {
+        return 'The favourites list is empty.';
+      } else {
+        return 'Favourites list:';
+      }
+    },
     getDataFromLocalStorage() {
       this.favouriteJokes = JSON.parse(localStorage.getItem('Favourites')) || [];
     },
