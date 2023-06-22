@@ -1,0 +1,23 @@
+<template>
+  <img :src="imgSrc" :alt="imgAlt">
+</template>
+
+<script>
+export default {
+  props: ['imgSrc', 'imgAlt']
+}
+</script>
+
+<style scoped>
+img{
+  position: absolute;
+  right: 12%;
+  top: 17%;
+  width: 37%;
+  height: 78%;
+  box-shadow: 5px 5px 5px #573131;
+  border-radius: 10%;
+  background-color: #efefef;
+}
+
+</style>

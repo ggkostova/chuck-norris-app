@@ -1,5 +1,5 @@
 <template>
-  <button class="button" @click="navigateTo">{{ buttonText }}</button>
+  <button id="button" @click="navigateTo">{{ buttonText }}</button>
 </template>
 
 <script>
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style>
-.button{
+#button{
   margin-left: 30px;
   padding: 10px 22px;
   background-color: #efd6d6;

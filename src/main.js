@@ -3,9 +3,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import { createStore } from "vuex";
 
-import HomePage from './components/view/HomePage.vue';
-import JokesPage from './components/view/JokesPage.vue';
-import FavouritesPage from './components/view/FavouritesPage.vue';
+import HomePage from './view/HomePage.vue';
+import JokesPage from './view/JokesPage.vue';
+import FavouritesPage from './view/FavouritesPage.vue';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const router = createRouter({

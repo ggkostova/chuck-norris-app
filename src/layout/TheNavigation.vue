@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="logo-side">
-      <img src="../../assets/images/logo.png" alt="Logo">
+      <img src="../../public/images/logo.png" alt="Logo">
     </div>
     <div class="buttons-side">
       <router-link :to="{ path: '/' }">
